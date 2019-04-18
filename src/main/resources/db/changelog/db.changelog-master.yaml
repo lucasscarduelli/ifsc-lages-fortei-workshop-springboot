@@ -1,0 +1,8 @@
+databaseChangeLog:
+- include:
+    file: db/changelog/db.changelog-001-create-table-serie.yaml
+- include:
+    file: db/changelog/db.changelog-002-create-table-filme.yaml
+
+
+
