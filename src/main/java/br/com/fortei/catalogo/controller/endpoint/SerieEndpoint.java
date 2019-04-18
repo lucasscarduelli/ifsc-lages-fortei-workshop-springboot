@@ -13,7 +13,7 @@ import java.util.List;
 public class SerieEndpoint {
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/api/series", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/api/series", method = {RequestMethod.GET})
     public List<Serie> findAll() {
         List<Serie> series = new ArrayList<>();
 
@@ -34,4 +34,28 @@ public class SerieEndpoint {
         return series;
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/api/series/{id}")
+    public Serie getById(@PathVariable Long id) {
+        return findAll().stream().filter(serie -> serie.getId() == id).findFirst().orElse(null);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/api/series")
+    public Serie create(@RequestBody Serie serie) {
+        return serie;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/api/series/{id}")
+    public Serie update(@RequestBody Serie serie, @PathVariable Long id) {
+        return serie;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/api/series/{id}")
+    public void delete(@PathVariable Long id) {
+
+    }
 }
+
